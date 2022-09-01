@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import {Toolbar,Divider,IconButton,Typography} from '@mui/material'
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import Home from './components/Home';
+import Subject from './components/Subject';
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+
+        {/* Header */}
+        <Toolbar>
+          <IconButton>
+            <MenuBookIcon/>
+          </IconButton>
+          <Typography variant='h6'>Hello Notes</Typography>
+        </Toolbar>
+        <Divider/>
+        <br />
+
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/subjects/:subName" element={<Subject />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
